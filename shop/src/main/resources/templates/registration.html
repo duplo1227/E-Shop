@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Shop</title>
+</head>
+<body>
+<h1>E-Shop</h1><hr>
+<h4>Registration</h4>
+<form action="/registration" method="post">
+    Username: <input type="text" name="username"><br><br>
+    email: <input type="email" name="email"><br><br>
+    Номер телефона: <input type="text" name="phoneNumber"><br><br>
+    Пароль: <input type="password" name="password"><br><br>
+    <input type="submit" value="Register"/>
+</form>
+<div th:if="${errorMessage}">
+<h2 style="color: red" th:text="${errorMessage}"></h2>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>E-Shop</title>
+</head>
+<body>
+<h1>E-Shop</h1><hr>
+<h3>User edit <span th:text="${user.name}"></span></h3>
+<form action="/admin/user/edit" method="post">
+    <div th:each="role : ${roles}">
+        <div>
+            <label><input type="checkbox" th:name="${role}" th:checked="${user.roles.contains(role)}"><span th:text="${role}"></span></label>
+        </div>
+    </div>
+    <input type="hidden" th:value="${user.id}" name="userId">
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

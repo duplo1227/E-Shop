@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Shop</title>
+</head>
+<body>
+<h1>E-Shop</h1><hr>
+<h4>Detailed information about the product</h4>
+<div th:each="img : ${images}">
+    <img th:src="@{'/images/' + img.id}" height="60px"/><br><br>
+</div>
+<b>Title: </b><span th:text="${product.title}"></span><br>
+<b>Description: </b><span th:text="${product.description}"></span><br>
+<b>Price: </b><span th:text="${product.price}"></span><br>
+<b>City: </b><span th:text="${product.city}"></span><br>
+<b>User: </b><span th:text="${product.user.username}"></span><br>
+<b>Phone number: </b><span th:text="${product.user.phoneNumber}"></span><br>
+</body>
+</html>

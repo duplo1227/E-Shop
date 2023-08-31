@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Shop</title>
+</head>
+<body>
+<h1>E-Shop</h1>
+<hr>
+<div th:if="${user.username != null}">
+    <h3>Your email is <i th:text="${user.email}"></i></h3>
+<form action="/logout" method="post">
+    <input type="submit" value="Exit"/>
+</form>
+</div>
+<a href="/login">Login</a>
+<hr>
+<h4>Products around the world</h4>
+<form action="/" method="get">
+    Search title of product: <input type="text" name="title">
+    <input type="submit" value="Search"/>
+</form>
+<div th:unless="${#lists.isEmpty(products)}">
+    <div th:each="product : ${products}">
+        <p><b th:text="${product.title}"></b> <span th:text="${product.price}"></span> $ | <a th:href="@{/product/{productId}(productId=${product.id})}">Details</a></p>
+    </div>
+</div>
+<div th:if="${#lists.isEmpty(products)}">
+    <h3>Didn't find anything for u</h3>
+</div>
+<div th:if="${user.username!=null}">
+<hr>
+<h3>Add new product</h3>
+<form action="/product/create" method="post" enctype="multipart/form-data">
+    Title: <input type="text" name="title"/><br><br>
+    Description: <input type="text" name="description"/><br><br>
+    Price: <input type="number" name="price"/><br><br>
+    City: <input type="text" name="city"/><br><br>
+    Phone number: <input type="text" name="phoneNumber"/><br><br>
+    First photo: <input type="file" name="file1"/><br><br>
+    Second photo: <input type="file" name="file2"/><br><br>
+    Third photo: <input type="file" name="file3"/><br><br>
+    <input type="submit" value="Add"/>
+</form>
+</div>
+</body>
+</html>

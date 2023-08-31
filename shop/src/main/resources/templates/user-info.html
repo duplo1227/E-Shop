@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>E-Shop</title>
+</head>
+<body>
+<h1>E-Shop</h1><hr>
+<h3>Detailed information about user <span th:text="${user.username}"></span></h3>
+<b>Phone number: </b> <span th:text="${user.phoneNumber}"></span><br>
+<b>Email: </b> <span th:text="${user.email}"></span><br>
+<h4>User's products <span th:text="${user.username}"></span></h4>
+<div th:unless="${#lists.isEmpty(products)}">
+    <div th:each="product : ${products}">
+        <p><b th:text="${product.title}"></b> <span th:text="${product.price}"></span> $ | <a th:href="@{/product/${product.id}">More</a></p>
+    </div>
+</div>
+<div th:if="${#lists.isEmpty(products)}">
+    <h3>Didn't find any products</h3>
+</div>
+<div th:if="${errorMessage}">
+    <h2 style="color: red" th:text="${errorMessage}"></h2>
+</div>
+</body>
+</html>
