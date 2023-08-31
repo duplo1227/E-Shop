@@ -24,7 +24,7 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public boolean createUser(User user){             // TODO to response entity, correct usages
+    public boolean createUser(User user){
         String username = user.getUsername();
         if (userRepository.findByUsername(username) != null){
             log.info("This user already exists");

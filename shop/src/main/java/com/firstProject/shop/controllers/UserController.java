@@ -22,12 +22,6 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/profile")
-    public String profile(Principal principal, Model model) {
-        User user = userService.getUserByPrincipal(principal);
-        model.addAttribute("user", user);
-        return "profile";
-    }
 
     @GetMapping("/registration")
     public String registration(Principal principal, Model model) {
